@@ -1,5 +1,12 @@
 # Lesson plan
 
+## Why
+1. To ensure reproducibility, everything is code. Models, data transformations, even data provenance.
+2. For readability, your code should be modular.
+3. One challenge with modular code (as well as different special-purpose tools) is to glue different components together. The glue part may sound unglamourous, but crucial.
+4. Bash and Make offer such glue. You can link together any number of tools that can be called from the command line. Preferably, they operate on flat files (which is what Make deals with). Suitable for medium-sized batch workflows.
+5. Often, these tools are good enough for the job. Bash and Make are available almost everywhere, no special tools needed. Especially useful for preprocessing data on a server before you can download a suitably sized data extract into your favorit analytics tool.
+
 ## Learning objectives and formative assessments
 ### Introduction to data science on the command line
 1. Download data using `curl`
