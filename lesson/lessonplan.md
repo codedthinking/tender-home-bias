@@ -35,10 +35,21 @@
 	- With `csvsql`, create an aggregated .csv files of countries, each country having two values: number of French tenders won (`num_tender`), value of tenders won (`value_tender`)
 	- Optional: for each source country, what is the share of tenders won by same-country firms? In which EU country is this the highest?
 	- Advanced: create a country-country dyadic data with these two columns. Merge with `country-codes.csv`. (We have not covered `csvjoin`)
+6. Write a bash script
+	- Copy commands into `filter_data.sh` and run it with `bash filter_data.sh`
+	- Set executable permission, add shebang `#!/usr/bin/env bash`
+	- Add command-line arguments ???
 
 ### Data pipelines with Make
-6. Write a bash script
 7. Write a simple pipeline in Make
+	- Create subsample from raw TED data with no multi-country entries
+	- Create French subsample from the file above
+	- Create dyadic dataset using `csvsql`
 8. Build a simple DAG in Make
+	- Add country codes??
 9. Use named and automatic variables in Make
-
+ 	- Parametrize using FR as the target country
+	- Use automatic variables for target and first source
+10. (advanced, optional) For loop and parallelizm in Make
+	- Write a for loop to gather each year's TED data
+	- Run this in parallel with `make -j4`
