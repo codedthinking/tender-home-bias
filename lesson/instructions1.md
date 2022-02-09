@@ -1,5 +1,11 @@
 # Pretext
-
+> You are waiting for your flight at Paris CDG when you get a call from the Directeur du Trésor. He is going to an EU meeting discussing public procurement, where cross-border procurement will be discussed. He wants to know how France compares to other EU countries in terms of cross-border procurement, when French public agencies are supplied by non-French tender winners.
+> 
+> Your laptop battery just died. You have access to a public internet terminal where you can fire up Replit with a bash terminal and access public data. You want to do an analysis that
+> 
+> 1. only uses the tools at your disposal (so that you impress the Directeur with your fast response)
+> 2. can be fully reproduced later when you get back to the office (or recharge your laptop)
+> 3. understandable by your colleagues.
 
 # Instructions
 We will use data from [Tenders Electronic Daily](https://data.europa.eu/data/datasets/ted-csv?locale=en). This is a database compiled by the European Commission on public procurements in the EU. We use a 100k sample of the 2019 Contract Award Notices. The file in .csv format.
@@ -34,5 +40,6 @@ Replit gives us a command line environment with a simple file browser and file e
 
 ## Save your work
 15. [ ] With `history`, print the commands you have used. Redirect the output to the file `history.txt` in your project folder.
-16. [ ] `Submit` your project in replit (button on top right).
+16. [ ] Run the automated tests (checkmark icon on the lower left).
+17. [ ] `Submit` your project in replit (button on top right).
 
