@@ -1,5 +1,12 @@
 # Lesson plan
 
+## Why
+1. To ensure reproducibility, everything is code. Models, data transformations, even data provenance.
+2. For readability, your code should be modular.
+3. One challenge with modular code (as well as different special-purpose tools) is to glue different components together. The glue part may sound unglamourous, but crucial.
+4. Bash and Make offer such glue. You can link together any number of tools that can be called from the command line. Preferably, they operate on flat files (which is what Make deals with). Suitable for medium-sized batch workflows.
+5. Often, these tools are good enough for the job. Bash and Make are available almost everywhere, no special tools needed. Especially useful for preprocessing data on a server before you can download a suitably sized data extract into your favorit analytics tool.
+
 ## Learning objectives and formative assessments
 ### Introduction to data science on the command line
 1. Download data using `curl`
@@ -28,10 +35,21 @@
 	- With `csvsql`, create an aggregated .csv files of countries, each country having two values: number of French tenders won (`num_tender`), value of tenders won (`value_tender`)
 	- Optional: for each source country, what is the share of tenders won by same-country firms? In which EU country is this the highest?
 	- Advanced: create a country-country dyadic data with these two columns. Merge with `country-codes.csv`. (We have not covered `csvjoin`)
+6. Write a bash script
+	- Copy commands into `filter_data.sh` and run it with `bash filter_data.sh`
+	- Set executable permission, add shebang `#!/usr/bin/env bash`
+	- Add command-line arguments ???
 
 ### Data pipelines with Make
-6. Write a bash script
 7. Write a simple pipeline in Make
+	- Create subsample from raw TED data with no multi-country entries
+	- Create French subsample from the file above
+	- Create dyadic dataset using `csvsql`
 8. Build a simple DAG in Make
+	- Add country codes??
 9. Use named and automatic variables in Make
-
+ 	- Parametrize using FR as the target country
+	- Use automatic variables for target and first source
+10. (advanced, optional) For loop and parallelizm in Make
+	- Write a for loop to gather each year's TED data
+	- Run this in parallel with `make -j4`
