@@ -19,7 +19,7 @@ Replit gives us a command line environment with a simple file browser and file e
 ## Do more complex queries in `csvsql`
 10. [ ] Select the first five rows of the `analysis-sample.csv` table using `csvsql`. Because dashes do not make for good table name, rename the table to `tender`.
 11. [ ] Aggregate tenders by origin and source country, saving the number of tenders as `num_tender` and the total award value as `value_tender`. (This is mostly SQL.) Save this file as `data/derived/country-pairs.csv`.
-12. [] Using `country-pairs.csv` and `csvsql`, calculate the share of tender value won by firms in the same country as the buyer.
+12. [ ] Using `country-pairs.csv` and `csvsql`, calculate the share of tender value won by firms in the same country as the buyer.
 
 > [Check out Julia Evans's SQL explainer](https://wizardzines.com/zines/sql/)
 

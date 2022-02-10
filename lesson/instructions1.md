@@ -1,7 +1,7 @@
 # Pretext
 > You are waiting for your flight at Paris CDG when you get a call from the Directeur du Trésor. He is going to an EU meeting discussing public procurement, where cross-border procurement will be discussed. He wants to know how France compares to other EU countries in terms of cross-border procurement, when French public agencies are supplied by non-French tender winners.
 > 
-> Your laptop battery just died. You have access to a public internet terminal where you can fire up Replit with a bash terminal and access public data. You want to do an analysis that
+> Your laptop battery just died. You have access to a computer where you can fire up Replit with a bash terminal and access public data. You want to do an analysis that
 > 
 > 1. only uses the tools at your disposal (so that you impress the Directeur with your fast response)
 > 2. can be fully reproduced later when you get back to the office (or recharge your laptop)
