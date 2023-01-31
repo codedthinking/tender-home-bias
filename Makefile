@@ -1,9 +1,14 @@
+COUNTRIES := AT DE FR IT PL HU RO
+
+all: $(foreach country,$(COUNTRIES),data/derived/$(country).csv)
 data/derived/ted-sample.csv: data/raw/ted/can-2019.csv data/raw/datahub/country-codes.csv
 	mkdir -p $(dir $@)
 	# copy header
 	head -n1 $< > $@
 	# get 100,000 lines from body
 	tail -n +2 $< | shuf -n 100000 >> $@
+data/derived/%.csv: data/derived/ted-sample.csv
+	csvgrep -c ISO_COUNTRY_CODE -m "$*" $< > $@
 data/raw/datahub/country-codes.csv:
 	mkdir -p $(dir $@)
 	curl -Lo $@ "https://datahub.io/core/country-codes/r/country-codes.csv"
