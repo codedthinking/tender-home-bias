@@ -1,17 +1,23 @@
 COUNTRIES := AT DE FR IT PL HU RO
+URL := https://data.europa.eu/api/hub/store/data/ted-contract-award-notices-2018-2022.zip
 
 all: $(foreach country,$(COUNTRIES),data/derived/$(country).csv)
-data/derived/ted-sample.csv: data/raw/ted/can-2019.csv data/raw/datahub/country-codes.csv
+data/derived/ted-sample.csv: data/raw/ted/open_data_can_2018_2019_2020_2021_2022.csv
 	mkdir -p $(dir $@)
 	# copy header
 	head -n1 $< > $@
-	# get 100,000 lines from body
-	tail -n +2 $< | shuf -n 100000 >> $@
+	# limit rows to single-country buyers and winners, then take a random sample of 50,000 contracts
+	< $< csvgrep -d, -c ISO_COUNTRY_CODE,WIN_COUNTRY_CODE -r "^[A-Z]{2}$$" | csvgrep -c VALUE_EURO -r "^$$" --invert | tail -n +2 | shuf -n 50000 >> $@
 data/derived/%.csv: data/derived/ted-sample.csv
 	csvgrep -c ISO_COUNTRY_CODE -m "$*" $< > $@
 data/raw/datahub/country-codes.csv:
 	mkdir -p $(dir $@)
 	curl -Lo $@ "https://datahub.io/core/country-codes/r/country-codes.csv"
-data/raw/ted/can-2019.csv: 
+data/raw/ted/open_data_can_2018_2019_2020_2021_2022.csv: data/raw/can-2018-2022.zip
 	mkdir -p $(dir $@)
-	curl -Lo $@ "https://data.europa.eu/euodp/repository/ec/dg-grow/mapps/TED%202020/TED%20-%20Contract%20award%20notices%202019.csv"
+	unzip -p $< > $@
+data/raw/can-2018-2022.zip:
+	mkdir -p $(dir $@)
+	curl -Lo $@ $(URL)
+
+
